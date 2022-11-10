@@ -34,7 +34,7 @@ function renderWeather(listObject, name) {
     document.getElementById('temp').textContent = `Tempature: ${main.temp}`;
     document.getElementById('cityName').textContent = `City Name: ${name}`;
     document.getElementById('date').textContent = `Date: ${dt_txt}`;
-    document.getElementById('icon').src = `http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
+    document.getElementById('icon').src = `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
 }
 
 function getCoords(url) {
