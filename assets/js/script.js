@@ -3,7 +3,7 @@ var searchKey = "";
 //grab html element to make submit button var.
 var submit = document.getElementById("submit");
 //insert api url.
-var coordsUrlBase = "http://api.openweathermap.org/data/2.5/forecast?q=";
+var coordsUrlBase = "https://api.openweathermap.org/data/2.5/forecast?q=";
 var appIdKey = "&appid=c8ede173089abf0bfda7f1b098428b03";
 
 //event listner on button element:
