@@ -4,16 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weather Dash</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
     <div>
         <h1>Weather Search</h1>
         <p>Enter a City or Zip Code.</p>
-        <input type="text" value="Seattle" name="location" id="location" title="location" placeholder="search cities">
+        <input type="text" id="loc" placeholder="search cities">
         <button id="submit">Submit</button>
         <br>
-        <div id="outputData"></div>
+        <div id="currentDay" style="display: none;">
+            <h3 id="cityName"></h3>
+            <h5 id="date"></h5>
+            <p id="humidity"></p>
+            <p id="temp"></p>
+            <img id="icon">
+        </div>
+        <div id="history">
+            <h3>History</h3>
+        </div>
     </div>
 
     <script src="/assets/js/script.js"></script>

@@ -1,18 +1,44 @@
 var apiKey = "c8ede173089abf0bfda7f1b098428b03";
 var searchKey = "";
+//grab html element to make submit button var.
 var submit = document.getElementById("submit");
-var coordsUrl = "http://api.openweathermap.org/data/2.5/forecast?q=london&appid=c8ede173089abf0bfda7f1b098428b03"
+//insert api url.
+var coordsUrlBase = "http://api.openweathermap.org/data/2.5/forecast?q=";
+var appIdKey = "&appid=c8ede173089abf0bfda7f1b098428b03";
 
-submit.addEventListener("click", () => {getCoords(coordsUrl)})
-//Function that fetches data
-function getWeather(url){
-    fetch(url).then(res => res.json()).then(data => console.log(data.list[0]))
+//event listner on button element:
+submit.addEventListener("click", () => {
+    getCoords(coordsUrlBase + document.getElementById("loc").value + appIdKey).then((data) => {
+    console.log(data);
+    document.getElementById("currentDay").style.display = "block";
+    renderWeather(data.list[0], data.city.name);
+    const history = document.getElementById("history");
+    const item = document.createElement('p');
+    item.addEventListener("click", () => {
+        getCoords( coordsUrlBase + data.city.name + appIdKey).then((data) => {
+            renderWeather(data.list[0], data.city.name);
+        })
+    });
+    item.textContent=data.city.name;
+    history.append(item);    
+    });
+});
+
+
+function renderWeather(listObject, name) {
+    console.log(listObject);
+
+    const {clouds, dt_txt, main, weather, wind} = listObject;
+    document.getElementById('humidity').textContent = `Humidity: ${main.humidity}`;
+    document.getElementById('temp').textContent = `Tempature: ${main.temp}`;
+    document.getElementById('cityName').textContent = `City Name: ${name}`;
+    document.getElementById('date').textContent = `Date: ${dt_txt}`;
+    document.getElementById('icon').src = `http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
 }
-//add event listner to button element
 
-// fetch coords
-function getCoords(url){
-    fetch(url).then(res => res.json()).then(data => console.log(data.list[0]))
+function getCoords(url) {
+    return (
+        fetch(url).then((res) => res.json())
+    );
+
 }
-
-
