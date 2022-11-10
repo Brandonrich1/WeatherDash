@@ -10,6 +10,7 @@ var appIdKey = "&appid=c8ede173089abf0bfda7f1b098428b03";
 submit.addEventListener("click", () => {
     getCoords(coordsUrlBase + document.getElementById("loc").value + appIdKey).then((data) => {
     console.log(data);
+    //display the currentdaydiv
     document.getElementById("currentDay").style.display = "block";
     renderWeather(data.list[0], data.city.name);
     const history = document.getElementById("history");
@@ -27,7 +28,7 @@ submit.addEventListener("click", () => {
 
 function renderWeather(listObject, name) {
     console.log(listObject);
-
+//text content of current day data return.
     const {clouds, dt_txt, main, weather, wind} = listObject;
     document.getElementById('humidity').textContent = `Humidity: ${main.humidity}`;
     document.getElementById('temp').textContent = `Tempature: ${main.temp}`;
